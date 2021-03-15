@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.hotmart.challenge.api.models.CategoryOutputModel;
+import com.hotmart.challenge.api.models.CategoryOutputDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +24,7 @@ public class Category {
 	@Size(max = 100)
 	private String name;
 
-	public CategoryOutputModel toOutputModel() {
-		return new CategoryOutputModel(getId(), getName());
+	public CategoryOutputDTO toOutputModel() {
+		return new CategoryOutputDTO(getId(), getName());
 	}
 }

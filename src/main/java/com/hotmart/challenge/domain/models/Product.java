@@ -15,7 +15,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.hotmart.challenge.api.models.ProductOutputModel;
+import com.hotmart.challenge.api.models.ProductOutputDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -48,7 +48,7 @@ public class Product {
 	@Transient
 	private BigDecimal averageSaleCreationDate;
 	
-	public ProductOutputModel toOutputModel() {
-		return new ProductOutputModel(getId(), getName(), getDescription(), getCreationDate(), getCategory().toOutputModel(), 0D);
+	public ProductOutputDTO toOutputModel() {
+		return new ProductOutputDTO(getId(), getName(), getDescription(), getCreationDate(), getCategory().toOutputModel(), 0D);
 	}
 }
