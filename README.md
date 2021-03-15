@@ -3,7 +3,7 @@
 <br/>
 <h4>Bora pra mais um desafio galera!</h4><br/>
 
-Neste repositório encontra-se o fonte de uma API Top, que além de um CRUD de produtos, lista o ranking dos mesmos conforme suas vendas em um determinado período, além de consumir dados de uma API externa que busca notícias relacionadas a categoria destes produtos. Parece meio complexo né, mas planejando uma boa arquitetura, tudo dá certo no final :D [O ministério da saúde adverte: Pegue seu café antes de começar] <br/>
+Neste repositório encontra-se o fonte de uma API Top, que além de um CRUD de produtos, lista o ranking dos mesmos conforme suas vendas em um determinado período, além de consumir dados de uma API externa que busca notícias relacionadas a categoria destes produtos. Parece meio complexo né, mas planejando uma boa arquitetura, tudo dá certo no final :D <br/> [O ministério da saúde adverte: Pegue seu café antes de começar] <br/>
 Antes de te contar mais detalhes do que ela faz, vou descrever os recursos que foram utilizados e como proceder pra buildar com sucesso ;) <br/><br/>
 
 <b>Tecnologias</b> - (Não foi desenvolvido nenhum código Front devido a deadline naquele padrão que já conhecemos: "pra ontem" <br/>
@@ -41,7 +41,9 @@ Então chega de falação e bora rodar a API<br/><br/>
 
 Contando que você já tenha o Java 11 instalado na sua máquina (se ainda não, baixe em : https://www.oracle.com/br/java/technologies/javase-jdk11-downloads.html),
 pelo prompt ou Git Bash, clone o projeto do repositorio do Git com o comando abaixo:<br/>
-git clone https://github.com/julio0345/challengeHotmart.git<br/><br/>
+```
+git clone https://github.com/julio0345/challengeHotmart.git
+```
 
 Após o download, importe o projeto na sua IDE de preferência (eu utilizei o STS4).<br/><br/>
 
@@ -52,18 +54,18 @@ Build o projeto e o nosso amigo  <b>Flayway </b> se responsabilizará em criar e
 Outra forma de utilizar a API, seria  pelo terminal:<br/>
 Nele, acesse o diretorio do projeto e execute o comando <br/>
 ```
-mvn clean package<br/>
+mvn clean package
 ```
 e sem seguida acesse o diretório onde foi criado o .jar (target) e execute o comando<br/>
 ```
-java -jar hotmart-api-0.0.1-SNAPSHOT.jar<br/>
+java -jar hotmart-api-0.0.1-SNAPSHOT.jar
 ```
 Maia uma vez, não se esqueça de instalar o <b>MySQL </b> (link para download: https://dev.mysql.com/downloads/) e configurar o seu usuário e senha do banco no arquivo application.properties<br/><br/>
 
  <h4>Documentação </h4>
 
 Deixei essa parte com o  <b>Swagger </b>. Para acessá-la, utilize a URL: http://localhost:8080/swagger-ui.html#/<br/>
-Ok eu poderia ter colocado algumas annotations para esclarecer mais, mas acredite, o tempo foi muuuito curto.<br/><br/>
+Tá eu sei, eu poderia ter colocado algumas annotations para esclarecer mais, mas acredite, o tempo foi muuuito curto.<br/><br/>
 
  <h4>Consumindo a API </h4>
 
@@ -87,12 +89,12 @@ Exemplo Json<br/>
 
 Como o produto tem uma entidade "Categoria" relacionada, eu solicitei a mesma como um objeto no json, na qual passamos um identificador da mesma.<br/>
 
- <b>READ </b>
+ <b>READ </b><br/>
 • Lista todos os produtos com paginação: GET: http://localhost:8080/products <br/><br/>
 
 • Busca algum produto específico: GET: http://localhost:8080/products/{id} <br/><br/>
 
- <b>UPDATE </b>
+ <b>UPDATE </b><br/>
 • Altera algum produto específico: PUT: http://localhost:8080/products/{id} <br/>
 ```
 {
@@ -105,7 +107,7 @@ Como o produto tem uma entidade "Categoria" relacionada, eu solicitei a mesma co
 ```
 Para o PUT você precisa de passar além do ID como parâmetro, um corpo (Json) informando o que deseja alterar no produto conforme mostrado acima.<br/><br/>
 
- <b>DELETE </b>
+ <b>DELETE </b><br/>
 • Exclui o produto específico: GET: http://localhost:8080/products/{id} <br/><br/>
 
 
@@ -135,9 +137,9 @@ Caso queira conferir os dados trazidos da API externa, segue a URI abaixo: <br/>
 GET: https://newsapi.org/v2/top-headlines?q=cursus&apiKey=cef8f96aec3a430c94fc00af34680ea2&pageSize=0  <br/> <br/>
 
 Veja que nela têm os parâmetros: <br/>
-q=cursus -> termo pesquisado <br/>
-apiKey=cef8f96aec3a430c94fc00af34680ea2 -> minha chave (segredo em kkkk) <br/>
-pageSize=0 -> Pra este serviço é desnecessário o conteúdo das notícias, apenas a quantidade das mesmas. <br/>
+<b>q</b>=cursus -> termo pesquisado <br/>
+<b>apiKey</b>=cef8f96aec3a430c94fc00af34680ea2 -> minha chave (segredo em kkkk) <br/>
+<b>pageSize</b>=0 -> Pra este serviço é desnecessário o conteúdo das notícias, apenas a quantidade das mesmas. <br/>
 Para mais detalhes desta API externa, acesse: <br/>
 https://newsapi.org/ <br/> <br/>
 
@@ -147,7 +149,7 @@ https://newsapi.org/ <br/> <br/>
 Pois é, o desafio que foi me passado (https://github.com/Hotmart-Org/hotmart-challenge/tree/master/back-end)  <br/>
 esperava a utilização de muitos outros recursos que infelizmente não pude implementar justamente por causa da deadline (tive apenas um final de semana pra implementar :( )  <br/> <br/>
 
-Por isso tive que mokar algumas informações dentro do código, como por exemplo, o método needExecuteJOb() da classe RankingService.java <br/>
+Por isso tive que mokar algumas informações dentro do código, como por exemplo, o método <b>needExecuteJOb()</b> da classe <b>RankingService.java</b> <br/>
 Caso queira simular uma execução sem o consumo da API externa, deixe-o retornando false. True para o contrário. <br/> <br/>
 
 Confesso que apanhei igual filho sem mãe dos testes Unitários e de Integração porque não estou habituados com os mesmos. (Cuidado, o Mock mata kkkkk) <br/>
