@@ -9,7 +9,7 @@ Antes de te contar mais detalhes do que ela faz, vou descrever os recursos que f
 <b>Tecnologias</b> - (Não foi desenvolvido nenhum código Front devido a deadline naquele padrão que já conhecemos: "pra ontem" <br/>
 • Java 11 \o/ <br/>
 • Spring Boot -> Neste font foi utilizado a versão 2.4.3<br/>
-• Lambok -> Chega de boiler plates \o/ <br/>
+• Lombok -> Chega de boiler plates \o/ <br/>
 • ModelMapper -> Pensa num cara inteligente... <br/>
 • JUnit -> Infelizmente não sobrou muito tempo pra ele, mas ele tá ai sim :)<br/>
 • Mockito -> Pensa num cara mentiroso ¬¬ <br/>
