@@ -2,6 +2,7 @@ package com.hotmart.challenge;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,16 +22,28 @@ import com.hotmart.challenge.api.models.CategoryInputDTO;
 import com.hotmart.challenge.api.models.ProductInputDTO;
 import com.hotmart.challenge.api.models.ProductOutputDTO;
 import com.hotmart.challenge.domain.models.Category;
+import com.hotmart.challenge.domain.models.Product;
 import com.hotmart.challenge.domain.repositories.CategoryRepository;
+import com.hotmart.challenge.domain.repositories.ProductRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class ProductIntegrationTest {
+	
 	final String BASE_PATH = "http://localhost:8080/products";
+	final String NAME_PRODUCT = "Tecnology Test_777";
+	final String DESCRIPTION_PRODUCT = "ESR - Especialist Spring Rest";
 	
 	private RestTemplate restTemplate;
 	
 	private ObjectMapper mapper;
+	
+	private Category categoryTest;
+	
+	private Product productTest;
+	
+	@Autowired
+	private ProductRepository  productRepository;
 	
 	@Autowired
 	private CategoryRepository  categoryRepository;
@@ -41,68 +54,56 @@ public class ProductIntegrationTest {
 		mapper = new ObjectMapper();
 		
 		Category category = new Category();
-		category.setName("Category UniK");
-		categoryRepository.save(category);
+		category.setName("Category 777");
+		categoryTest = categoryRepository.save(category);
+		
+		productTest = new Product();
+		productTest.setCategory(categoryTest);
+		productTest.setCreationDate(OffsetDateTime.now());
+		productTest.setDescription(DESCRIPTION_PRODUCT);
+		productTest.setName(NAME_PRODUCT);
+		productTest = productRepository.save(productTest);
 	}
 	
 	@Test
-	public void testPost() throws JsonProcessingException {
-		ProductInputDTO product = new ProductInputDTO();
+	public void test1PostProduct() throws JsonProcessingException {
 		CategoryInputDTO categoryInputModel = new CategoryInputDTO();
-		categoryInputModel.setId(1L);
-
+		categoryInputModel.setId(categoryTest.getId());
+		
+		ProductInputDTO product = new ProductInputDTO();
 		product.setCategory(categoryInputModel);
-		product.setDescription("Tecnology");
-		product.setName("ESR - Especialist Spring Rest");
+		product.setDescription(NAME_PRODUCT);
+		product.setName(DESCRIPTION_PRODUCT);
 		
 		ProductOutputDTO response = restTemplate.postForObject(BASE_PATH, product, ProductOutputDTO.class);
-		assertEquals("Tecnology", response.getDescription());
+		assertEquals(NAME_PRODUCT, response.getDescription());
 	}
 	
-	@Test
-	public void testGet() throws JsonProcessingException {
-		String response = restTemplate.getForObject(BASE_PATH + "/1", String.class);
-        List<ProductOutputDTO> productOutput = mapper.readValue(response, mapper.getTypeFactory().constructCollectionType(List.class, ProductOutputDTO.class));
-    	
-        assertEquals("Tecnology", productOutput.get(0).getDescription());
-    	assertEquals("ESR - Especialist Spring Rest", productOutput.get(0).getName());
-    	assertEquals(1, productOutput.get(0).getCategory().getId());
-	}
+//	@Test
+//	public void test2GetProduct() throws JsonProcessingException {
+//		String response = restTemplate.getForObject(BASE_PATH + "/" + productTest.getId(), String.class);
+//        List<ProductOutputDTO> productOutput = mapper.readValue(response, mapper.getTypeFactory().constructCollectionType(List.class, ProductOutputDTO.class));
+//    	
+//        assertEquals(DESCRIPTION_PRODUCT, productOutput.get(0).getDescription());
+//    	assertEquals(NAME_PRODUCT, productOutput.get(0).getName());
+//    	assertEquals(productTest.getId(), productOutput.get(0).getCategory().getId());
+//	}
 	
-	@Test
-	public void testPut() throws JsonProcessingException {
-//		ProductInputModel product = new ProductInputModel();
-//		CategoryInputModel categoryInputModel = new CategoryInputModel();
-//		categoryInputModel.setId(1L);
+//	@Test
+//	public void testDeleteProduct() {
+//		  RestTemplate restTemplate = new RestTemplate();
+//		    Map<String, Long> params = new HashMap<String, Long>();
+//		    params.put("id", productTest.getId());
+//		    restTemplate.delete ( BASE_PATH,  params );
+//	}
+	
+//	@Test
+//	public void test3PutProduct() throws JsonProcessingException {
 //
-//		product.setCategory(categoryInputModel);
-//		product.setDescription("Tecnology Updated");
-//		product.setName("ITA - COURSES");
-//		
-//		ProductOutputModel response = restTemplate.put(BASE_PATH, product, ProductOutputModel.class);
-//		assertEquals("Tecnology", response.getDescription());
-		
-		Map<String, String> params = new HashMap<String, String>();
-	    params.put("id", "1");
-	     
-	    ProductInputDTO product = new ProductInputDTO("TEcnology Updated", "ITA_ COURSES", new CategoryInputDTO(1L));
-	     
-	    restTemplate.put(BASE_PATH, product, params);
-	}
-	
-	@Test
-	public void buscaUmContatoDeveRetornarNaoEncontrado() {
-
-//		ResponseEntity<Contato> resposta =
-//				testRestTemplate.exchange("/agenda/contato/{id}",HttpMethod.GET,null, Contato.class,100 );
-//
-//		Assert.assertEquals(HttpStatus.NOT_FOUND, resposta.getStatusCode());
-//		Assert.assertNull(resposta.getBody());
-	}
-
+//	}
 	
 	@After
 	public void end() {
-		categoryRepository.deleteAll();
+
 	}
 }
