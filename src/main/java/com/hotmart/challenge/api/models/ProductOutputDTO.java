@@ -1,6 +1,10 @@
 package com.hotmart.challenge.api.models;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +15,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(Include.NON_NULL)
 public class ProductOutputDTO {
 	
 	private Long id;
@@ -18,5 +23,5 @@ public class ProductOutputDTO {
 	private String description;
 	private OffsetDateTime creationDate;
 	private CategoryOutputDTO category;
-	private Double score;
+	private BigDecimal score;
 }

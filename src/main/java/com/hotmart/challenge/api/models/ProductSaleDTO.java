@@ -30,6 +30,7 @@ public class ProductSaleDTO {
 
 	/***
 	 * This method return the average of sale per day since creation date of product
+	 * 
 	 * @return average: Number of sale / number of days that product exists
 	 */
 	public BigDecimal getAverageSaleCreation() {

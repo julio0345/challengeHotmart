@@ -17,6 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class RankingOutputDTO {
+	
 	private OffsetDateTime searchDate;
 	private String searchTerm;
 	private List<ProductOutputRankingDTO> listProducts;

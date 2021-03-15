@@ -42,11 +42,11 @@ public class ProductService implements IProductService {
 
 	public ProductOutputDTO post(ProductInputDTO productInput) {
 		Category category = getCategoryById(productInput.getCategory().getId());
-		
+
 		Product product = toModel(productInput);
 		product.setCategory(category);
 		product.setCreationDate(OffsetDateTime.now());
-		
+
 		product = repository.save(product);
 		return product.toOutputModel();
 	}
@@ -61,12 +61,12 @@ public class ProductService implements IProductService {
 
 	public ProductOutputDTO update(Long id, ProductInputDTO productInput) {
 		Category category = getCategoryById(productInput.getCategory().getId());
-		
+
 		Product product = getProductById(id);
 		product.setName(productInput.getName());
-		product.setDescription(productInput.getDescription());		
+		product.setDescription(productInput.getDescription());
 		product.setCategory(category);
-		
+
 		product = repository.save(product);
 		return product.toOutputModel();
 	}

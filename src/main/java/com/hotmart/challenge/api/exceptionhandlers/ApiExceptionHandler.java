@@ -31,7 +31,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	public ResponseEntity<Object> handleValidation(ValidationException ex, WebRequest request){
 		var status = HttpStatus.BAD_REQUEST;
 		var errorModel = populateError(ex, null, status, null);
-		
 		return super.handleExceptionInternal(ex, errorModel, new HttpHeaders(), status, request);
 	}
 	
@@ -39,7 +38,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	public ResponseEntity<Object> handleNotFound(ValidationException ex, WebRequest request){
 		var status = HttpStatus.NOT_FOUND;
 		var errorModel = populateError(ex, null, status, null);
-		
 		return super.handleExceptionInternal(ex, errorModel, new HttpHeaders(), status, request);
 	}
 	
@@ -58,7 +56,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	
 	private ErrorModel populateError(Exception ex, String message, HttpStatus status, List<ErrorModel.Field> listField) {
 		var errorModel = new ErrorModel();
-		
 		errorModel.setStatus(status.value());
 		errorModel.setOffsetDateTime(OffsetDateTime.now());
 		errorModel.setTitle(null != message ? message : ex.getMessage());
@@ -68,5 +65,4 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		}
 		return errorModel;
 	}
-	
 }

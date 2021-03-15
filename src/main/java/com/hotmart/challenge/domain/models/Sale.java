@@ -18,25 +18,25 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Sale {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_seller")
-	private Seller seller; 
-	
+	private Seller seller;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_buyer")
-	private Buyer buyer; 
-	
+	private Buyer buyer;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_product")
 	private Product product;
-	
+
 	@Column(name = "sale_date")
 	private OffsetDateTime saleDate;
-	
+
 	private Integer evaluation;
 }

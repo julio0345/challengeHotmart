@@ -39,7 +39,6 @@ public class ProductController {
 		ProductOutputDTO productOutput = service.getProductOutputById(id);
 		return ResponseEntity.ok(productOutput);
 	}
-
 	
 	@GetMapping
 	public ResponseEntity<Page<ProductOutputDTO>> list(Pageable pageable){

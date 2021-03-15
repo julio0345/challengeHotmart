@@ -49,6 +49,6 @@ public class Product {
 	private BigDecimal averageSaleCreationDate;
 	
 	public ProductOutputDTO toOutputModel() {
-		return new ProductOutputDTO(getId(), getName(), getDescription(), getCreationDate(), getCategory().toOutputModel(), 0D);
+		return new ProductOutputDTO(getId(), getName(), getDescription(), getCreationDate(), getCategory().toOutputModel(), null);
 	}
 }

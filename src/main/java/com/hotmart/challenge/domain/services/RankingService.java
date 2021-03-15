@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,7 +23,6 @@ import com.hotmart.challenge.domain.models.Product;
 import com.hotmart.challenge.domain.models.Sale;
 import com.hotmart.challenge.domain.repositories.CategoryRepository;
 import com.hotmart.challenge.domain.repositories.NewsRepository;
-import com.hotmart.challenge.domain.repositories.ProductRepository;
 import com.hotmart.challenge.domain.repositories.SaleRepository;
 import com.hotmart.challenge.domain.services.interfaces.IRankingService;
 import com.hotmart.challenge.externalapi.model.ApiNews;
@@ -35,9 +33,6 @@ public class RankingService implements IRankingService {
 
 	@Autowired
 	private SaleRepository saleRepository;
-
-	@Autowired
-	private ProductRepository productRepository;
 
 	@Autowired
 	private NewsRepository newsRepository;
@@ -165,8 +160,7 @@ public class RankingService implements IRankingService {
 		return ranking;
 	}
 
-	/**
-	 * 
+	/** 
 	 * @param variableX - Average of Evaluation of each product
 	 * @param variableY - Average of sale since creation date
 	 * @param variableZ - Quantity of news of category
@@ -176,33 +170,18 @@ public class RankingService implements IRankingService {
 		return variableX.add(variableY).add(variableZ);
 	}
 
-	private List<Category> findCategory(String category) {
-		List<Category> listCategory = new ArrayList<Category>();
-
-		if (null != category) {
-			listCategory = categoryRepository.findByName(category);
-		} else {
-			listCategory = categoryRepository.findAll();
-		}
-		return listCategory;
-	}
-
-	/***
-	 * TODO - Implements
-	 */
 	private void executeJob() {
 		try {
 			newsRepository.deleteAll();
 			updateNewsCategory();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
 	private List<News> findNews(String category) {
 		List<News> listNews = new ArrayList<News>();
 
-		// TODO - Verify job
 		boolean executeJob = needExecuteJOb();
 
 		if (executeJob) {
