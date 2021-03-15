@@ -1,0 +1,12 @@
+/* Populating table of buyer */
+
+INSERT INTO `buyer` (`name`) VALUES ("Theodore W. Peck"),("Guy Y. Lee"),("Kermit O. Ayala"),("Tana Dalton"),("Clare P. England"),("Teegan O. Barber"),("Allistair Sargent"),("Adara Cohen"),("Lucy Nichols"),("Finn James");
+INSERT INTO `buyer` (`name`) VALUES ("Idona S. Bowers"),("Nathaniel F. Hines"),("Stephanie C. Le"),("Donna Stevenson"),("Gage O. Flynn"),("Georgia Y. Woods"),("Fiona U. Bowen"),("Hanae Snyder"),("Blaze H. Jensen"),("Michael L. Kent");
+INSERT INTO `buyer` (`name`) VALUES ("Josephine K. Robles"),("Claudia Z. Lloyd"),("Neve Beard"),("Vivian F. Suarez"),("Doris Sutton"),("Juliet K. Ruiz"),("Kasper Slater"),("Bernard Hooper"),("Sylvester J. Fletcher"),("Hedley Schwartz");
+INSERT INTO `buyer` (`name`) VALUES ("Alan Kirkland"),("Cain I. Middleton"),("Herman E. Spencer"),("Clarke Long"),("Hillary Gregory"),("Anjolie Mann"),("Ora R. Keith"),("Jacqueline Guy"),("Cody Erickson"),("Zane J. Mcintosh");
+INSERT INTO `buyer` (`name`) VALUES ("Olivia L. Singleton"),("Gary William"),("Cameron C. Sawyer"),("Iliana L. Kemp"),("Ciaran T. Joseph"),("Regan Johnston"),("Wanda V. Higgins"),("Boris Poole"),("Elmo O. Myers"),("Tanner G. Randall");
+INSERT INTO `buyer` (`name`) VALUES ("Stone O. Bowman"),("Willow Fleming"),("Gloria Q. Horton"),("Dacey Deleon"),("Keely S. Knight"),("Skyler Mills"),("Clayton Santana"),("Cailin T. Munoz"),("Medge Crosby"),("Gemma J. Kim");
+INSERT INTO `buyer` (`name`) VALUES ("Jena Saunders"),("Stacey Sweeney"),("Kenneth X. Castro"),("Malcolm Hubbard"),("Sara B. Nicholson"),("Tatiana Henson"),("Jerry Downs"),("Autumn B. Wright"),("Hayes V. Bryant"),("Upton A. Dunn");
+INSERT INTO `buyer` (`name`) VALUES ("Lamar J. Fleming"),("Stephen L. Saunders"),("Samuel Z. Ward"),("Raphael D. Middleton"),("Kato Welch"),("Michael Hughes"),("Indira D. Pollard"),("Jakeem York"),("Charissa Evans"),("Lars Y. Berger");
+INSERT INTO `buyer` (`name`) VALUES ("Christian P. Hodges"),("Shannon Meyers"),("Kim R. Gibson"),("Palmer N. Curry"),("Yen Wyatt"),("Abbot N. Maddox"),("Alec R. Rodgers"),("Stone Harrington"),("Nicholas Head"),("Aladdin F. Finch");
+INSERT INTO `buyer` (`name`) VALUES ("Richard Schwartz"),("Moses E. White"),("Xerxes Owens"),("Rajah Rowland"),("Yetta A. Flowers"),("Quemby N. Peterson"),("Ingrid Nixon"),("Erasmus Z. Burgess"),("Dane T. Oliver"),("Martin J. Lynn");
